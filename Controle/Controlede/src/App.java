@@ -25,191 +25,193 @@ public class App {
                 opcao = sc.nextInt();
                 sc.nextLine();
 
-                switch (opcao) {
-                    case 1: {
-                        System.out.println("\n-----PRODUTOS-----\n");
+            } catch (InputMismatchException e) {
+                System.out.println("Digite uma opção válida");
+                sc.nextLine();
+                continue;
+            }
 
-                        if (produtos.isEmpty()) {
-                            System.out.println("Não há nenhum produto cadastrado");
-                        } else {
-                            for (int i = 0; i < produtos.size(); i++) {
-                                System.out.println(
-                                        (i + 1) + " -" + " Produto: " + produtos.get(i) + " |" + " Quantidade: "
-                                                + qtdProduto.get(i) + " |" + " Preço: R$ " + precoProduto.get(i));
-                            }
-                        }
-                        break;
-                    }
+            switch (opcao) {
+                case 1: {
+                    System.out.println("\n-----PRODUTOS-----\n");
 
-                    case 2: {
-                        System.out.println("\n-----CADASTRAR PRODUTOS-----");
-
-                        System.out.println("Digite  o nome do produto: ");
-                        String nome = sc.nextLine();
-
-                        System.out.println("Digite a quantidade: ");
-
-                        int quantidade;
-
-                        try {
-                            quantidade = sc.nextInt();
-                            sc.nextLine();
-                        } catch (InputMismatchException e) {
-                            System.out.println("Digite uma quantidade válida.");
-                            sc.nextLine();
-                            break;
-                        }
-
-                        if (quantidade <= 0) {
-                            System.out.println("Digite uma quantidade válida.");
-                            break;
-                        }
-
-                        System.out.println("Informe o valor: ");
-
-                        double preco;
-
-                        try {
-                            preco = sc.nextDouble();
-                            sc.nextLine();
-                        } catch (InputMismatchException e) {
-                            System.out.println("Informe um valor válido.");
-                            sc.nextLine();
-                            break;
-                        }
-
-                        if (preco <= 0) {
-                            System.out.println("Informe um valor válido.");
-                            break;
-                        }
-
-                        produtos.add(nome);
-                        qtdProduto.add(quantidade);
-                        precoProduto.add(preco);
-
-                        System.out.println("O produto foi cadastrado!");
-                        break;
-                    }
-
-                    case 3: {
-                        System.out.println("\n-----REPOR PRODUTO-----\n");
-
-                        if (produtos.isEmpty()) {
-                            System.out.println("Não há nenhum produto cadastrado");
-                            break;
-                        }
-
+                    if (produtos.isEmpty()) {
+                        System.out.println("Não há nenhum produto cadastrado");
+                    } else {
                         for (int i = 0; i < produtos.size(); i++) {
-                            System.out.println((i + 1) + " -" + " Produto: " + produtos.get(i) + " Quantidade: "
-                                    + qtdProduto.get(i));
+                            System.out.println(
+                                    (i + 1) + " -" + " Produto: " + produtos.get(i) + " |" + " Quantidade: "
+                                            + qtdProduto.get(i) + " |" + " Preço: R$ " + precoProduto.get(i));
                         }
+                    }
+                    break;
+                }
 
-                        System.out.println("Digite o número do produto: ");
+                case 2: {
+                    System.out.println("\n-----CADASTRAR PRODUTOS-----");
 
-                        int produto;
+                    System.out.println("Digite  o nome do produto: ");
+                    String nome = sc.nextLine();
 
-                        try {
-                            produto = sc.nextInt();
-                            sc.nextLine();
-                        } catch (InputMismatchException e) {
-                            System.out.println("Digite um número válido");
-                            sc.nextLine();
-                            break;
-                        }
+                    System.out.println("Digite a quantidade: ");
 
-                        if (produto < 1 || produto > produtos.size()) {
-                            System.out.println("Número inválido");
-                            break;
-                        }
+                    int quantidade;
 
-                        int indice = produto - 1;
-
-                        System.out.println("Informe a quantidade que deseja repor: ");
-
-                        int quantidade;
-
-                        try {
-                            quantidade = sc.nextInt();
-                            sc.nextLine();
-                        } catch (InputMismatchException e) {
-                            System.out.println("Digite uma quantidade válida");
-                            sc.nextLine();
-                            break;
-                        }
-
-                        if (quantidade <= 0) {
-                            System.out.println("A quantidade deve ser maior que zero");
-                            break;
-                        }
-
-                        qtdProduto.set(indice, qtdProduto.get(indice) + quantidade);
-                        System.out.println("Produto reposto.");
-
+                    try {
+                        quantidade = sc.nextInt();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite uma quantidade válida.");
+                        sc.nextLine();
                         break;
-
                     }
 
-                    case 4: {
-                        System.out.println("\n-----RETIRAR PRODUTO-----\n");
-
-                        if (produtos.isEmpty()) {
-                            System.out.println("Não há nenhum produto cadastrado");
-                            break;
-                        }
-
-                        for (int i = 0; i < produtos.size(); i++) {
-                            System.out.println((i + 1) + " -" + " Produto: " + produtos.get(i) + " Quantidade: "
-                                    + qtdProduto.get(i));
-                        }
-
-                        System.out.println("Digite o número do produto: ");
-
-                        int produto;
-
-                        try {
-                            produto = sc.nextInt();
-                            sc.nextLine();
-                        } catch (InputMismatchException e) {
-                            System.out.println("Digite um número válido");
-                            sc.nextLine();
-                            break;
-                        }
-
-                        if (produto < 1 || produto > produtos.size()) {
-                            System.out.println("Número inválido");
-                            break;
-                        }
-
-                        int indice = produto - 1;
-
-                        System.out.println("Informe a quantidade que deseja retirar: ");
-
-                        int quantidade;
-
-                        try {
-                            quantidade = sc.nextInt();
-                            sc.nextLine();
-                        } catch (InputMismatchException e) {
-                            System.out.println("Digite uma quantidade válida");
-                            sc.nextLine();
-                            break;
-                        }
-
-                        if (quantidade <= 0) {
-                            System.out.println("A quantidade deve ser maior que zero");
-                            break;
-                        }
-
-                        qtdProduto.set(indice, qtdProduto.get(indice) - quantidade);
-                        System.out.println("Produto retirado.");
-
+                    if (quantidade <= 0) {
+                        System.out.println("Digite uma quantidade válida.");
                         break;
-
                     }
+
+                    System.out.println("Informe o valor: ");
+
+                    double preco;
+
+                    try {
+                        preco = sc.nextDouble();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Informe um valor válido.");
+                        sc.nextLine();
+                        break;
+                    }
+
+                    if (preco <= 0) {
+                        System.out.println("Informe um valor válido.");
+                        break;
+                    }
+
+                    produtos.add(nome);
+                    qtdProduto.add(quantidade);
+                    precoProduto.add(preco);
+
+                    System.out.println("O produto foi cadastrado!");
+                    break;
+                }
+
+                case 3: {
+                    System.out.println("\n-----REPOR PRODUTO-----\n");
+
+                    if (produtos.isEmpty()) {
+                        System.out.println("Não há nenhum produto cadastrado");
+                        break;
+                    }
+
+                    for (int i = 0; i < produtos.size(); i++) {
+                        System.out.println((i + 1) + " -" + " Produto: " + produtos.get(i) + " | " + " Quantidade: "
+                                + qtdProduto.get(i));
+                    }
+
+                    System.out.println("Digite o número do produto: ");
+
+                    int produto;
+
+                    try {
+                        produto = sc.nextInt();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite um número válido");
+                        sc.nextLine();
+                        break;
+                    }
+
+                    if (produto < 1 || produto > produtos.size()) {
+                        System.out.println("Número inválido");
+                        break;
+                    }
+
+                    int indice = produto - 1;
+
+                    System.out.println("Informe a quantidade que deseja repor: ");
+
+                    int quantidade;
+
+                    try {
+                        quantidade = sc.nextInt();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite uma quantidade válida");
+                        sc.nextLine();
+                        break;
+                    }
+
+                    if (quantidade <= 0) {
+                        System.out.println("A quantidade deve ser maior que zero");
+                        break;
+                    }
+
+                    qtdProduto.set(indice, qtdProduto.get(indice) + quantidade);
+                    System.out.println("Produto reposto.");
+
+                    break;
 
                 }
 
-            } catch (Exception e) {
+                case 4: {
+                    System.out.println("\n-----RETIRAR PRODUTO-----\n");
+
+                    if (produtos.isEmpty()) {
+                        System.out.println("Não há nenhum produto cadastrado");
+                        break;
+                    }
+
+                    for (int i = 0; i < produtos.size(); i++) {
+                        System.out.println((i + 1) + " -" + " Produto: " + produtos.get(i) + " | " + " Quantidade: "
+                                + qtdProduto.get(i));
+                    }
+
+                    System.out.println("Digite o número do produto: ");
+
+                    int produto;
+
+                    try {
+                        produto = sc.nextInt();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite um número válido");
+                        sc.nextLine();
+                        break;
+                    }
+
+                    if (produto < 1 || produto > produtos.size()) {
+                        System.out.println("Número inválido");
+                        break;
+                    }
+
+                    int indice = produto - 1;
+
+                    System.out.println("Informe a quantidade que deseja retirar: ");
+
+                    int quantidade;
+
+                    try {
+                        quantidade = sc.nextInt();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite uma quantidade válida");
+                        sc.nextLine();
+                        break;
+                    }
+
+                    if (quantidade <= 0) {
+                        System.out.println("A quantidade deve ser maior que zero");
+                        break;
+                    }
+
+                    qtdProduto.set(indice, qtdProduto.get(indice) - quantidade);
+                    System.out.println("Produto retirado.");
+
+                    break;
+
+                }
 
             }
 
